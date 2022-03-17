@@ -296,11 +296,11 @@ def run(driver, userName, password, campus, mail_address, phone_number, reason, 
             print("======= 第", try_times + 1, "次报备尝试 =======")
             login(driver, userName, password)
             go_to_application_out(driver)
-            #fill_out(driver, campus, mail_address, phone_number, reason, detail, destination, track)
-            fill_out_last(driver)
+            fill_out(driver, campus, mail_address, phone_number, reason, detail, destination, track)
+            #fill_out_last(driver)
             go_to_application_in(driver, userName, password)
-            #fill_in(driver, campus, mail_address, phone_number, reason, detail, habitation, district, street)
-            fill_in_last(driver)
+            fill_in(driver, campus, mail_address, phone_number, reason, detail, habitation, district, street)
+            #fill_in_last(driver)
             print('\n报备成功')
             break
 
