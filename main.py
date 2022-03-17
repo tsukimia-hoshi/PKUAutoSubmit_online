@@ -100,7 +100,20 @@ def go_to_application_in(driver, userName, password):
         driver.find_element_by_class_name('el-card__body').click()
         WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'el-select')))
+        
+def select_last_out(driver):
+    txt="出校申请信息"
+    WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(
+            (By.XPATH, f'//span[text()="{txt}"]')))
+    driver.find_element_by_xpath(f'//span[text()="{txt}"]').click()
 
+def select_last_in(driver):
+    txt="入校申请信息"
+    WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(
+            (By.XPATH, f'//span[text()="{txt}"]')))
+    driver.find_element_by_xpath(f'//span[text()="{txt}"]').click()
 
 def select_in_out(driver, way):
     driver.find_element_by_class_name('el-select').click()
@@ -186,6 +199,22 @@ def submit(driver):
     time.sleep(0.1)
 
 
+def fill_out_last(driver)
+    print('开始填报出校备案')
+    print('开始拉取上次出校信息')
+    select_last_out(driver)
+    click_check(driver)
+    submit(driver)
+    print('出校备案填报完毕！')
+
+def fill_in_last(driver)
+    print('开始填报入校备案')
+    print('开始拉取上次入校信息')
+    select_last_in(driver)
+    click_check(driver)
+    submit(driver)
+    print('入校备案填报完毕！')
+    
 def fill_out(driver, campus, mail_address, phone_number, reason, detail, destination, track):
     print('开始填报出校备案')
     print('选择出校/入校    ', end='')
@@ -268,9 +297,11 @@ def run(driver, userName, password, campus, mail_address, phone_number, reason, 
             print("======= 第", try_times + 1, "次报备尝试 =======")
             login(driver, userName, password)
             go_to_application_out(driver)
-            fill_out(driver, campus, mail_address, phone_number, reason, detail, destination, track)
+            #fill_out(driver, campus, mail_address, phone_number, reason, detail, destination, track)
+            fill_out_last(driver)
             go_to_application_in(driver, userName, password)
-            fill_in(driver, campus, mail_address, phone_number, reason, detail, habitation, district, street)
+            #fill_in(driver, campus, mail_address, phone_number, reason, detail, habitation, district, street)
+            fill_in_last(driver)
             print('\n报备成功')
             break
 
