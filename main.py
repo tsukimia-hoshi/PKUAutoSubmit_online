@@ -198,16 +198,15 @@ def submit(driver):
         '(//button/span[contains(text(),"提交")])[3]').click()
     time.sleep(0.1)
 
-
-def fill_out_last(driver)
+def fill_out_last(driver):
     print('开始填报出校备案')
     print('开始拉取上次出校信息')
     select_last_out(driver)
     click_check(driver)
     submit(driver)
     print('出校备案填报完毕！')
-
-def fill_in_last(driver)
+    
+def fill_in_last(driver):
     print('开始填报入校备案')
     print('开始拉取上次入校信息')
     select_last_in(driver)
